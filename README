@@ -1,0 +1,72 @@
+NAME
+    Greek::BetaCodeParser - A TLG Beta Code parser
+
+SYNOPSIS
+        use Greek::BetaCodeParser;
+        @ISA=qw( Greek::BetaCodeParser );
+
+DESCRIPTION
+    Greek::BetaCodeParser parses strings of TLG BetaCode into individual
+    BetaCode symbols.
+
+PUBLIC METHODS
+  Constructor
+    $parser = new Greek::BetaCodeParser( [$text] );
+
+    Constructor for the parser. Returns a reference to a
+    Greek::BetaCodeParser object. If passed a $text parameter, the text to
+    parse will be set.
+
+  text()
+    $old = $parser->text( [$new] )
+
+    Returns the string to be parsed. Sets the string to be parsed if passed
+    a parameter.
+
+  remaining();
+    $len = $parser->remaining()
+
+    Returns the length of unparsed characters in the string.
+
+  position()
+    $old = $parser->position( [$new] );
+
+    Returns position of parser in string and sets it id a parameter is
+    passed.
+
+  getNextAtom()
+    $atom = $parser->getNextAtom();
+
+    Return the next BetaCode atom -- defined as a string corresponding to a
+    single Greek letter or symbol.
+
+    Returns an empty string if there is no next atom;
+
+  getAtoms()
+    @atoms = $parser->getAtoms([$max]);
+
+    Returns a list of $max number of atoms from the string, or of all atoms
+    in the string if no $max is specified or if $max is 0;.
+
+  getNextWord()
+    @atoms = $parser->getNextWord();
+
+    Returns a the next word in the string as list of atoms;
+
+  getWords()
+    $parser->getWords( [$max] );
+
+    Returns a list of $max number words as lists of atoms, or a list of all
+    words as lists of atoms if no $max is specified of if $max is 0;
+
+  countAtoms()
+    $count = $parser->countAtoms()
+
+    Returns the number of atoms in the string. Does not change POS.
+
+  countRemainingAtoms()
+    $count = $parser->countRemainingAtoms();
+
+    Returns the number of unparsed atoms remaining in the string. Does not
+    change POS.
+
